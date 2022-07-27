@@ -1,0 +1,45 @@
+## Median-MAD (median absolute deviation) Normalisierung
+
+# Normalisierung der einzelnen Attribute
+x = daten$dataset.L4_SRC_PORT
+m <- median(x)
+mad <- mad(x)
+L4_SRC_PORT_norm <- (x-m)/mad
+
+x = daten$dataset.L4_DST_PORT
+m <- median(x)
+mad <- mad(x)
+L4_DST_PORT_norm <- (x-m)/mad
+
+x = daten$dataset.IN_BYTES
+m <- median(x)
+mad <- mad(x)
+IN_BYTES_norm <- (x-m)/mad
+
+x = daten$dataset.OUT_BYTES
+m <- median(x)
+mad <- mad(x)
+OUT_BYTES_norm <- (x-m)/mad
+
+x = daten$dataset.IN_PKTS
+m <- median(x)
+mad <- mad(x)
+IN_PKTS_norm <- (x-m)/mad
+
+x = daten$dataset.OUT_PKTS
+m <- median(x)
+mad <- mad(x)
+OUT_PKTS_norm <- (x-m)/mad
+
+x = daten$dataset.FLOW_DURATION_MILLISECONDS
+m <- median(x)
+mad <- mad(x)
+FLOW_DURATION_MILLISECONDS_norm <- (x-m)/mad
+
+#Erstellung eines Dataframes mti den normalisierten Attributen
+daten_norm <- data.frame(L4_SRC_PORT_norm, L4_DST_PORT_norm, PROTOCOL_norm,
+                                IN_BYTES_norm, OUT_BYTES_norm,IN_PKTS_norm,
+                                OUT_PKTS_norm, FLOW_DURATION_MILLISECONDS_norm)
+
+# Betrachtung der Struktur des Dataframes
+str(normal_daten_norm)
