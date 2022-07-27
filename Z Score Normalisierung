@@ -1,0 +1,25 @@
+## Z Score Normalisierung mit scale()
+
+L4_SRC_PORT_norm <- scale(daten$dataset.L4_SRC_PORT)
+L4_DST_PORT_norm <- scale(daten$dataset.L4_DST_PORT)
+PROTOCOL_norm <- scale(daten$dataset.PROTOCOL)
+IN_BYTES_norm <- scale(daten$dataset.IN_BYTES)
+OUT_BYTES_norm <- scale(daten$dataset.OUT_BYTES)
+IN_PKTS_norm <- scale(daten$dataset.IN_PKTS)
+OUT_PKTS_norm <- scale(daten$dataset.OUT_PKTS)
+FLOW_DURATION_MILLISECONDS_norm <- scale(daten$dataset.FLOW_DURATION_MILLISECONDS)
+Label_norm <- scale(daten$dataset.Label)
+
+normal_daten_norm <- data.frame(L4_SRC_PORT_norm, L4_DST_PORT_norm, PROTOCOL_norm,
+                                IN_BYTES_norm, OUT_BYTES_norm,IN_PKTS_norm,
+                                OUT_PKTS_norm, FLOW_DURATION_MILLISECONDS_norm)
+str(normal_daten_norm)
+View(normal_daten_norm)
+
+## Z Score Normalisierung nach der Formel Z = (x-mean)/standard derivation
+
+x = normal_daten$normal_dataset.L4_SRC_PORT
+m <- mean(x)
+s <- sd(x)
+L4_SRC_PORT_norm <- (x-m)/s
+L4_SRC_PORT_norm
