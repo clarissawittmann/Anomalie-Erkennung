@@ -1,0 +1,26 @@
+## Min-Max Normalisierung
+
+# Aufstellen der Funktion
+normalize <- function(x){
+  return ((x - min(x)) / (max(x) - min(x)))
+}
+
+# Normalisierung der einzelnen/gewählten Attribute
+L4_SRC_PORT_norm <- normalize(daten$dataset.L4_SRC_PORT)
+L4_DST_PORT_norm <- normalize(daten$dataset.L4_DST_PORT)
+PROTOCOL_norm <- normalize(daten$dataset.PROTOCOL)
+IN_BYTES_norm <- normalize(daten$dataset.IN_BYTES)
+OUT_BYTES_norm <- normalize(daten$dataset.OUT_BYTES)
+IN_PKTS_norm <- normalize(daten$dataset.IN_PKTS)
+OUT_PKTS_norm <- normalize(daten$dataset.OUT_PKTS)
+FLOW_DURATION_MILLISECONDS_norm <- normalize(daten$dataset.FLOW_DURATION_MILLISECONDS)
+Label_norm <- normalize(daten$dataset.Label)
+
+# Erstellung eines Dataframes mit den normalisierten Attributen
+daten_norm <- data.frame(L4_SRC_PORT_norm, L4_DST_PORT_norm, PROTOCOL_norm,
+                        IN_BYTES_norm, OUT_BYTES_norm, IN_PKTS_norm,
+                        OUT_PKTS_norm, FLOW_DURATION_MILLISECONDS_norm,
+                        Label_norm)
+
+# Betrachtung der Struktur des Dataframes
+str(daten_norm)
