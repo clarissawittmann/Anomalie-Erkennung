@@ -1,0 +1,84 @@
+## PCA der normalisierten Daten
+
+# Überprüfung, ob die normalisierten Daten für eine PCA verwendet werden können
+library(psych)
+KMO(daten_norm)$MSA
+
+# Feststellung der optimalen Anzahl an Hauptkomponenten
+scree(daten_norm)
+
+# PCA der normalisierten Daten 
+daten_pca <- prcomp(daten_norm, scale = TRUE, center = TRUE)
+
+#Verschiedene Arten der ersten Betrachtung
+daten_pca
+plot(daten_pca)
+str(daten_pca)
+View(daten_pca)
+
+# Nähere Betrachtung & Visualisierung der Hauptkomponenten
+#===================================================================
+library(factoextra)
+
+# Ergebnisse der PCA in einer eigenen Variable speichern
+eig <- get_eigenvalue(daten_pca)
+eig
+
+# Datenframe erzeugen der Ergebnisse erzeugen
+df_eig <- data.frame(eigenvalue = eig[ ,1], variance = eig[ ,2], cumvariance = eig[ ,3])
+df_eig <- cbind(df_eig, row_id = as.factor(1:nrow(eig)), row_count = 1:nrow(eig))
+df_eig
+
+Row_Id <- df_eig$row_id
+Row_Count <- df_eig$row_count
+CumPVE <- (round(df_eig$cumvariance, digits = 2)) #Runden des Wertes auf zwei Ziffern
+Variance <- (round(df_eig$variance, digits = 2)) #Runden des Wertes auf zwei Ziffern
+
+library(ggplot2)
+
+# Abbilden des Verhältnisses der Variance (PVE) für jeden Eigenvektor
+#===================================================================
+ggplot(df_eig,aes(x = Row_Id,y = Variance)) +
+  geom_bar(stat = "identity",aes(fill = Row_Id),color = "black") +
+  geom_path(aes(x = Row_Count),size = 1,color = "Gray50") +
+  geom_point(color = "Gray50", size = 1) +
+  xlab("Principal Component") +
+  ylab("Proportion of Variance Explained, (PVE)") +
+  scale_fill_brewer(breaks = c(1:9),
+                    palette = "YlGnBu",
+                    direction = -1) +
+  theme_bw(base_size = 12) +
+  theme(legend.position = "none")
+
+# Abbilden der Accumulated Sum of PVE für jeden Eigenvektor
+#===================================================================
+ggplot(df_eig,aes(x = Row_Id,y = CumPVE, group = 1)) +
+  geom_bar(stat = "identity",aes(fill = Row_Id),color = "black") +
+  geom_path(aes(x = Row_Count),size = 1,color = "Gray50") +
+  geom_hline(yintercept = 90, linetype = "dashed", color = "Gray50", size = 1, show.legend = T) +
+  geom_text(aes(label = paste(CumPVE, "%", sep = "")), vjust = 3, color = "Gray50") +
+  geom_point(color = "Gray50", size = 1) +
+  xlab("Principal Component") +
+  ylab("Accumulated Percentage of PVE") +
+  scale_fill_brewer(breaks = c(1:9),
+                    palette = "YlGnBu",
+                    direction = -1) +
+  theme_bw(base_size = 12) +
+  theme(legend.position = "none")
+
+## Datenframe mit allen 9 Hauptkomponenten
+# Anzahl kann sich je nach Daten & Normalisierung ändern
+#===================================================================
+PCA_Components_Stamps = data.frame(daten_pca$x)
+PC1 <- PCA_Components_Stamps$PC1
+PC2 <- PCA_Components_Stamps$PC2
+PC3 <- PCA_Components_Stamps$PC3
+PC4 <- PCA_Components_Stamps$PC4
+PC5 <- PCA_Components_Stamps$PC5
+PC6 <- PCA_Components_Stamps$PC6
+PC7 <- PCA_Components_Stamps$PC7
+PC8 <- PCA_Components_Stamps$PC8
+PC9 <- PCA_Components_Stamps$PC9
+PCA_Components_Stamps
+
+str(PCA_Components_Stamps)
