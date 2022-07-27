@@ -1,0 +1,42 @@
+## Median-IQR Normalisierung
+
+x = normal_daten$normal_dataset.L4_SRC_PORT
+m <- median(x)
+i <- IQR(x)
+L4_SRC_PORT_norm <- (x-m)/i
+
+x = normal_daten$normal_dataset.L4_DST_PORT
+m <- median(x)
+i <- IQR(x)
+L4_DST_PORT_norm <- (x-m)/i
+
+x = normal_daten$normal_dataset.IN_BYTES
+m <- median(x)
+i <- IQR(x)
+IN_BYTES_norm <- (x-m)/i
+
+x = normal_daten$normal_dataset.OUT_BYTES
+m <- median(x)
+i <- IQR(x)
+OUT_BYTES_norm <- (x-m)/i
+
+x = normal_daten$normal_dataset.IN_PKTS
+m <- median(x)
+i <- IQR(x)
+IN_PKTS_norm <- (x-m)/i
+
+x = normal_daten$normal_dataset.OUT_PKTS
+m <- median(x)
+i <- IQR(x)
+OUT_PKTS_norm <- (x-m)/i
+
+x = normal_daten$normal_dataset.FLOW_DURATION_MILLISECONDS
+m <- median(x)
+i <- IQR(x)
+FLOW_DURATION_MILLISECONDS_norm <- (x-m)/i
+
+
+normal_daten_norm <- data.frame(L4_SRC_PORT_norm, L4_DST_PORT_norm, PROTOCOL_norm,
+                                IN_BYTES_norm, OUT_BYTES_norm,IN_PKTS_norm,
+                                OUT_PKTS_norm, FLOW_DURATION_MILLISECONDS_norm)
+str(normal_daten_norm)
