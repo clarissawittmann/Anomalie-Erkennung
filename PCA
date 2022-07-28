@@ -19,6 +19,7 @@ View(daten_pca)
 # Nähere Betrachtung & Visualisierung der Hauptkomponenten
 #===================================================================
 library(factoextra)
+library(ggplot2)
 
 # Ergebnisse der PCA in einer eigenen Variable speichern
 eig <- get_eigenvalue(daten_pca)
@@ -34,7 +35,6 @@ Row_Count <- df_eig$row_count
 CumPVE <- (round(df_eig$cumvariance, digits = 2)) #Runden des Wertes auf zwei Ziffern
 Variance <- (round(df_eig$variance, digits = 2)) #Runden des Wertes auf zwei Ziffern
 
-library(ggplot2)
 
 # Abbilden des Verhältnisses der Variance (PVE) für jeden Eigenvektor
 #===================================================================
