@@ -1,0 +1,76 @@
+## kmeans Clustering
+
+# Ellenbogen Methode zur Bestimmung der optimalen Clusteranzahl
+set.seed(6)
+wcss<-vector()
+x=normal_daten_norm
+for (i in 1:10)
+  wcss[i]=sum(kmeans(x,i)$withinss)
+wcss
+# Visualisierung des Ergebnisses
+plot(1:10,wcss,type="b",main=paste('cluster of traffic'),xlab="no of clusters",ylab="wcss")
+
+
+# Clustering-Funktion
+library(ClusterR)
+library(cluster)
+
+# Erstellung von 2 Clustern
+set.seed(240)
+kmeans.re <- kmeans(daten_norm, centers = 2, nstart = 20)
+kmeans.re
+# Erstellung von 6 Clustern --> Ergebnis der Ellenbogen Methode
+set.seed(240)
+kmeans.re <- kmeans(daten_norm, centers = 6, nstart = 20)
+kmeans.re
+
+# Betrachtung der Struktur der Cluster
+str(kmeans.re)
+kmeans.re$cluster
+kmeans.re$centers
+
+# Auswahl von verschiedene Visualisierungen der Cluster
+
+fviz_cluster( kmeans.re, data = daten_norm,
+              geom = "point",
+              show.clust.cent = TRUE,
+              ellipse.type = "convex",
+              ggtheme = theme_bw(),
+              main = "Network Traffic Cluster",
+)
+
+cluster1 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 1:2],
+                          geom = "point",
+                          show.clust.cent = TRUE,
+                          ellipse.type = "convex",
+                          ggtheme = theme_bw(),
+                          main = "Network Traffic Cluster",
+)
+cluster1
+
+cluster2 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 2:3],
+                          geom = "point",
+                          show.clust.cent = TRUE,
+                          ellipse.type = "convex",
+                          ggtheme = theme_bw(),
+                          main = "Network Traffic Cluster",
+)
+cluster2
+
+cluster3 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 3:4],
+                          geom = "point",
+                          show.clust.cent = TRUE,
+                          ellipse.type = "convex",
+                          ggtheme = theme_bw(),
+                          main = "Network Traffic Cluster",
+)
+cluster3
+
+cluster4 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 4:5],
+                          geom = "point",
+                          show.clust.cent = TRUE,
+                          ellipse.type = "convex",
+                          ggtheme = theme_bw(),
+                          main = "Network Traffic Cluster",
+)
+cluster4
