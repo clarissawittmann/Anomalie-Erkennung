@@ -3,7 +3,7 @@
 # Ellenbogen Methode zur Bestimmung der optimalen Clusteranzahl
 set.seed(6)
 wcss<-vector()
-x=normal_daten_norm
+x=daten_norm
 for (i in 1:10)
   wcss[i]=sum(kmeans(x,i)$withinss)
 wcss
