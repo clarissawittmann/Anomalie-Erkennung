@@ -42,4 +42,4 @@ daten_norm <- data.frame(L4_SRC_PORT_norm, L4_DST_PORT_norm, PROTOCOL_norm,
                                 OUT_PKTS_norm, FLOW_DURATION_MILLISECONDS_norm)
 
 # Betrachtung der Struktur des Dataframes
-str(normal_daten_norm)
+str(daten_norm)
