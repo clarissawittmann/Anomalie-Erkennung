@@ -20,6 +20,7 @@ set.seed(240)
 kmeans.re <- kmeans(daten_norm, centers = 2, nstart = 20)
 kmeans.re
 # Erstellung von 6 Clustern --> Ergebnis der Ellenbogen Methode
+# Je nach Daten kann der Wert der Ellenbogen Methode anders sein
 set.seed(240)
 kmeans.re <- kmeans(daten_norm, centers = 6, nstart = 20)
 kmeans.re
