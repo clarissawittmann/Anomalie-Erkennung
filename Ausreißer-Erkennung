@@ -14,13 +14,13 @@ print(outliers)
 print(daten_norm[outliers,])
 
 # Visualisierungen der Ausreißer
-plot(ndaten_norm[,c("L4_SRC_PORT_norm", "L4_DST_PORT_norm")], pch=19, col=kmeans.re$cluster, cex=1)
+plot(daten_norm[,c("L4_SRC_PORT_norm", "L4_DST_PORT_norm")], pch=19, col=kmeans.re$cluster, cex=1)
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
 points(daten_norm[outliers, c("L4_SRC_PORT_norm", "L4_DST_PORT_norm")], pch="+", col=4, cex=3)
 
 plot(daten_norm[,c("L4_DST_PORT_norm", "PROTOCOL_norm")], pch=19, col=kmeans.re$cluster, cex=1)
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
-points(normal_daten_norm[outliers, c("L4_DST_PORT_norm", "PROTOCOL_norm")], pch="+", col=4, cex=3)
+points(daten_norm[outliers, c("L4_DST_PORT_norm", "PROTOCOL_norm")], pch="+", col=4, cex=3)
 
 plot(daten_norm[,c("PROTOCOL_norm", "IN_BYTES_norm")], pch=19, col=kmeans.re$cluster, cex=1)
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
@@ -34,13 +34,13 @@ plot(daten_norm[,c("OUT_BYTES_norm", "IN_PKTS_norm")], pch=19, col=kmeans.re$clu
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
 points(daten_norm[outliers, c("OUT_BYTES_norm", "IN_PKTS_norm")], pch="+", col=4, cex=3)
 
-plot(daten_norm[,c("IN_PKTS_norm", "OUT_PKTS_norm")], pch=19, col=_kmeans.re$cluster, cex=1)
+plot(daten_norm[,c("IN_PKTS_norm", "OUT_PKTS_norm")], pch=19, col=kmeans.re$cluster, cex=1)
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
 points(daten_norm[outliers, c("IN_PKTS_norm", "OUT_PKTS_norm")], pch="+", col=4, cex=3)
 
-plot(normal_daten_norm[,c("OUT_PKTS_norm", "FLOW_DURATION_MILLISECONDS_norm")], pch=19, col=normal_kmeans.re$cluster, cex=1)
+plot(daten_norm[,c("OUT_PKTS_norm", "FLOW_DURATION_MILLISECONDS_norm")], pch=19, col=kmeans.re$cluster, cex=1)
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
-points(normal_daten_norm[outliers, c("OUT_PKTS_norm", "FLOW_DURATION_MILLISECONDS_norm")], pch="+", col=4, cex=3)
+points(daten_norm[outliers, c("OUT_PKTS_norm", "FLOW_DURATION_MILLISECONDS_norm")], pch="+", col=4, cex=3)
 
 #================================================================================
 
@@ -49,7 +49,7 @@ centers <- kmeans.re$centers[kmeans.re$cluster,]
 str(centers)
 head(centers)
 
-distance <- sqrt(rowSums((normal_PCA_Components_Stamps-centers)^2))
+distance <- sqrt(rowSums((PCA_Components_Stamps-centers)^2))
 distance
 # Auswahl der ersten 10 Ausreißer
 outliers <- order(distance, decreasing = TRUE)[1:10]
@@ -70,7 +70,7 @@ plot(PCA_Components_Stamps[,c("PC3", "PC4")], pch=19, col=kmeans.re$cluster, cex
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
 points(PCA_Components_Stamps[outliers, c("PC3", "PC4")], pch="+", col=4, cex=3)
 
-plot(PCA_Components_Stamps[,c("PC4", "PC5")], pch=19, col=normal_kmeans.re$cluster, cex=1)
+plot(PCA_Components_Stamps[,c("PC4", "PC5")], pch=19, col=kmeans.re$cluster, cex=1)
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
 points(PCA_Components_Stamps[outliers, c("PC4", "PC5")], pch="+", col=4, cex=3)
 
