@@ -42,6 +42,7 @@ plot(normal_daten_norm[,c("OUT_PKTS_norm", "FLOW_DURATION_MILLISECONDS_norm")], 
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
 points(normal_daten_norm[outliers, c("OUT_PKTS_norm", "FLOW_DURATION_MILLISECONDS_norm")], pch="+", col=4, cex=3)
 
+#================================================================================
 
 ## Ausreißer-Erkennung mit vorheriger PCA
 centers <- kmeans.re$centers[kmeans.re$cluster,]
