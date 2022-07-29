@@ -11,6 +11,11 @@ m <- median(x)
 i <- IQR(x)
 L4_DST_PORT_norm <- (x-m)/i
 
+x = daten$dataset.PROTOCOL
+m <- median(x)
+i <- IQR(x)
+PROTOCOL_norm <- (x-m)/i
+
 x = daten$dataset.IN_BYTES
 m <- median(x)
 i <- IQR(x)
