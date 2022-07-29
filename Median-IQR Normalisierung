@@ -11,11 +11,6 @@ m <- median(x)
 i <- IQR(x)
 L4_DST_PORT_norm <- (x-m)/i
 
-x = daten$dataset.PROTOCOL
-m <- median(x)
-i <- IQR(x)
-PROTOCOL_norm <- (x-m)/i
-
 x = daten$dataset.IN_BYTES
 m <- median(x)
 i <- IQR(x)
@@ -42,7 +37,7 @@ i <- IQR(x)
 FLOW_DURATION_MILLISECONDS_norm <- (x-m)/i
 
 # Erstellen eines Dataframes mit den normalisierten Attributen
-daten_norm <- data.frame(L4_SRC_PORT_norm, L4_DST_PORT_norm, PROTOCOL_norm,
+daten_norm <- data.frame(L4_SRC_PORT_norm, L4_DST_PORT_norm,
                                 IN_BYTES_norm, OUT_BYTES_norm,IN_PKTS_norm,
                                 OUT_PKTS_norm, FLOW_DURATION_MILLISECONDS_norm)
                
