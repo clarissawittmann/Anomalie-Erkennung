@@ -12,6 +12,7 @@ outliers <- order(distance, decreasing = TRUE)[1:10]
 # Ausgabe der ersten 10 Ausreißer
 print(outliers)
 print(daten_norm[outliers,])
+print(daten[outliers,])
 
 # Visualisierungen der Ausreißer
 plot(daten_norm[,c("L4_SRC_PORT_norm", "L4_DST_PORT_norm")], pch=19, col=kmeans.re$cluster, cex=1)
@@ -56,6 +57,7 @@ outliers <- order(distance, decreasing = TRUE)[1:10]
 # Ausgabe der ersten 10 Ausreißer
 print(outliers)
 print(PCA_Components_Stamps[outliers,])
+print(daten[outliers,])
 
 # Visualisierungen der Ausreißer
 plot(PCA_Components_Stamps[,c("PC1", "PC2")], pch=19, col=kmeans.re$cluster, cex=1)
