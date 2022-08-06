@@ -14,6 +14,14 @@ print(outliers)
 print(daten_norm[outliers,])
 print(daten[outliers,])
 
+# Anzahl True positiv
+TP <- subset(daten[outliers,], dataset.Label == 1)
+nrow(TP)
+
+# Anzahl False positiv
+FP <- subset(daten[outliers,], dataset.Label == 0)
+nrow(FP)
+
 # Visualisierungen der Ausreißer
 plot(daten_norm[,c("L4_SRC_PORT_norm", "L4_DST_PORT_norm")], pch=19, col=kmeans.re$cluster, cex=1)
 points(kmeans.re$centers, col=1:3, pch=15, cex=2)
@@ -58,6 +66,14 @@ outliers <- order(distance, decreasing = TRUE)[1:10]
 print(outliers)
 print(PCA_Components_Stamps[outliers,])
 print(daten[outliers,])
+
+# Anzahl True positiv
+TP <- subset(daten[outliers,], dataset.Label == 1)
+nrow(TP)
+
+# Anzahl False positiv
+FP <- subset(daten[outliers,], dataset.Label == 0)
+nrow(FP)
 
 # Visualisierungen der Ausreißer
 plot(PCA_Components_Stamps[,c("PC1", "PC2")], pch=19, col=kmeans.re$cluster, cex=1)
