@@ -13,9 +13,6 @@ plot(1:10,wcss,type="b",main=paste('cluster of traffic'),xlab="no of clusters",y
 
 
 # Clustering-Funktion
-library(ClusterR)
-library(cluster)
-library(factoextra)
 
 # Erstellung von 2 Clustern mit Messung der Laufzeit
 set.seed(240)
@@ -41,6 +38,8 @@ kmeans.re$cluster
 kmeans.re$centers
 
 # Auswahl von verschiedene Visualisierungen der Cluster mit Messung der Laufzeit
+library(factoextra)
+
 start.time <- Sys.time()
 fviz_cluster( kmeans.re, data = daten_norm,
               geom = "point",
@@ -69,9 +68,6 @@ plot(1:10,wcss,type="b",main=paste('cluster of traffic'),xlab="no of clusters",y
 
 
 # Clustering-Funktion
-library(ClusterR)
-library(cluster)
-library(factoextra)
 
 # Erstellung von 2 Clustern mit Messung der Laufzeit
 set.seed(240)
@@ -91,6 +87,7 @@ kmeans.re$cluster
 kmeans.re$centers
 
 # Auswahl von verschiedene Visualisierungen der Cluster mit Messung der Laufzeit
+library(factoextra)
 
 start.time <- Sys.time()
 fviz_cluster( kmeans.re, data = PCA_Components_Stamps,
