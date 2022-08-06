@@ -17,23 +17,31 @@ library(ClusterR)
 library(cluster)
 library(factoextra)
 
-# Erstellung von 2 Clustern
+# Erstellung von 2 Clustern mit Messung der Laufzeit
 set.seed(240)
+start.time <- Sys.time()
 kmeans.re <- kmeans(daten_norm, centers = 2, nstart = 20)
 kmeans.re
-# Erstellung von 6 Clustern --> Ergebnis der Ellenbogen Methode
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
+# Erstellung von 6 Clustern mit Messung der Laufzeit --> Ergebnis der Ellenbogen Methode
 # Je nach Daten kann der Wert der Ellenbogen Methode anders sein
 set.seed(240)
+start.time <- Sys.time()
 kmeans.re <- kmeans(daten_norm, centers = 6, nstart = 20)
 kmeans.re
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
 
 # Betrachtung der Struktur der Cluster
 str(kmeans.re)
 kmeans.re$cluster
 kmeans.re$centers
 
-# Auswahl von verschiedene Visualisierungen der Cluster
-
+# Auswahl von verschiedene Visualisierungen der Cluster mit Messung der Laufzeit
+start.time <- Sys.time()
 fviz_cluster( kmeans.re, data = daten_norm,
               geom = "point",
               show.clust.cent = TRUE,
@@ -41,6 +49,9 @@ fviz_cluster( kmeans.re, data = daten_norm,
               ggtheme = theme_bw(),
               main = "Network Traffic Cluster",
 )
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
 
 #================================================================================
 
@@ -62,13 +73,15 @@ library(ClusterR)
 library(cluster)
 library(factoextra)
 
-# Erstellung von 2 Clustern
+# Erstellung von 2 Clustern mit Messung der Laufzeit
 set.seed(240)
+start.time <- Sys.time()
 kmeans.re <- kmeans(PCA_Components_Stamps, centers = 2, nstart = 20)
 kmeans.re
-# Erstellung von 4 Clustern --> Ergebnis der Ellenbogen Methode
+# Erstellung von 4 Clustern mit Messung der Laufzeit --> Ergebnis der Ellenbogen Methode
 # Je nach Daten kann der Wert hier anders sein
 set.seed(240)
+start.time <- Sys.time()
 kmeans.re <- kmeans(PCA_Components_Stamps, centers = 6, nstart = 20)
 kmeans.re
 
@@ -77,8 +90,9 @@ str(kmeans.re)
 kmeans.re$cluster
 kmeans.re$centers
 
-# Auswahl von verschiedene Visualisierungen der Cluster
+# Auswahl von verschiedene Visualisierungen der Cluster mit Messung der Laufzeit
 
+start.time <- Sys.time()
 fviz_cluster( kmeans.re, data = PCA_Components_Stamps,
               geom = "point",
               show.clust.cent = TRUE,
@@ -86,7 +100,11 @@ fviz_cluster( kmeans.re, data = PCA_Components_Stamps,
               ggtheme = theme_bw(),
               main = "Network Traffic Cluster",
 )
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
 
+start.time <- Sys.time()
 cluster1 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 1:2],
                           geom = "point",
                           show.clust.cent = TRUE,
@@ -94,8 +112,12 @@ cluster1 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 1:2],
                           ggtheme = theme_bw(),
                           main = "Network Traffic Cluster",
 )
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
 cluster1
 
+start.time <- Sys.time()
 cluster2 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 2:3],
                           geom = "point",
                           show.clust.cent = TRUE,
@@ -103,8 +125,12 @@ cluster2 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 2:3],
                           ggtheme = theme_bw(),
                           main = "Network Traffic Cluster",
 )
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
 cluster2
 
+start.time <- Sys.time()
 cluster3 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 3:4],
                           geom = "point",
                           show.clust.cent = TRUE,
@@ -112,8 +138,12 @@ cluster3 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 3:4],
                           ggtheme = theme_bw(),
                           main = "Network Traffic Cluster",
 )
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
 cluster3
 
+start.time <- Sys.time()
 cluster4 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 4:5],
                           geom = "point",
                           show.clust.cent = TRUE,
@@ -121,4 +151,7 @@ cluster4 <- fviz_cluster(kmeans.re, data = PCA_Components_Stamps[, 4:5],
                           ggtheme = theme_bw(),
                           main = "Network Traffic Cluster",
 )
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
 cluster4
