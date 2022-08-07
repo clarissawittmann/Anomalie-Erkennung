@@ -14,6 +14,9 @@ print(outliers)
 print(daten_norm[outliers,])
 print(daten[outliers,])
 
+# Ausgabe der Distanzen
+sort(distance, decreasing = TRUE)[1:10]
+
 # Anzahl True positiv
 TP <- subset(daten[outliers,], dataset.Label == 1)
 nrow(TP)
