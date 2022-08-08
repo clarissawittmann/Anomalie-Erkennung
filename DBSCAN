@@ -1,0 +1,19 @@
+## DBSCAN Algorithmus
+library(dbscan)
+
+# Optimalen Wert für eps finden mit Messung der Laufzeit
+start.time <- Sys.time()
+kNNdistplot(daten_norm, k = 9)
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
+
+# Durchführung & Visualisierung des Algorithmus mit Messung der Laufzeit
+start.time <- Sys.time()
+set.seed(2)
+db <- dbscan(daten_norm, eps = 0.025, MinPts = 9)
+db
+hullplot(daten_norm, db)
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
