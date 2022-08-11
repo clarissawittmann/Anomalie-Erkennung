@@ -80,6 +80,9 @@ set.seed(240)
 start.time <- Sys.time()
 kmeans.re <- kmeans(PCA_Components_Stamps, centers = 6, nstart = 20)
 kmeans.re
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
 
 # Betrachtung der Struktur der Cluster
 str(kmeans.re)
